@@ -1,0 +1,20 @@
+[user]
+    name = Marcus Boon
+    email = "(none)"
+[color]
+    ui = true
+[diff]
+    renamelimit = 8000
+[alias]
+    co = checkout
+    lg = log --graph --pretty=format:'%Cred%h%Creset -%C(yellow)%d%Creset %s %Cgreen(%cr) %C(bold blue)<%an>%Creset' --date=relative
+    pom = push origin master
+    pohm = push origin HEAD:master
+    sub = "submodule foreach --quiet 'echo \"$(git rev-parse --abbrev-ref HEAD)    => $name\"'"
+    sup = !sh -c 'git submodule sync && git submodule init && git pull --recurse-submodules && git submodule update --remote --merge --recursive' -
+[core]
+    filemode = false
+[help]
+    autocorrect = 1
+[push]
+    recurseSubmodule = check
