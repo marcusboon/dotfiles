@@ -38,3 +38,4 @@
 ; push variable
 [push]
     recurseSubmodule = check
+    default = matching
