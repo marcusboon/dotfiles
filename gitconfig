@@ -1,10 +1,28 @@
+#
+# This is the config file, and
+# a '#' or ';' character indicates
+# a comment
+#
+
+; core variables
+[core]
+    filemode = false
+    trustctime = false
+
+; user variables
 [user]
     name = Marcus Boon
     email = "(none)"
+
+; Make it pretty!
 [color]
     ui = true
+
+; Custom stuff for diff
 [diff]
     renamelimit = 8000
+
+; This is for convenience
 [alias]
     co = checkout
     lg = log --graph --pretty=format:'%Cred%h%Creset -%C(yellow)%d%Creset %s %Cgreen(%cr) %C(bold blue)<%an>%Creset' --date=relative
@@ -12,9 +30,11 @@
     pohm = push origin HEAD:master
     sub = "submodule foreach --quiet 'echo \"$(git rev-parse --abbrev-ref HEAD)    => $name\"'"
     sup = !sh -c 'git submodule sync && git submodule init && git pull --recurse-submodules && git submodule update --remote --merge --recursive' -
-[core]
-    filemode = false
+
+; Also for convenience
 [help]
     autocorrect = 1
+
+; push variable
 [push]
     recurseSubmodule = check
