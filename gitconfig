@@ -7,7 +7,7 @@
 ; core variables
 [core]
     filemode = false
-    trustctime = false
+	trustctime = false
 
 ; user variables
 [user]
