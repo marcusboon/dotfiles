@@ -28,6 +28,7 @@
     lg = log --graph --pretty=format:'%Cred%h%Creset -%C(yellow)%d%Creset %s %Cgreen(%cr) %C(bold blue)<%an>%Creset' --date=relative
     pom = push origin master
     pohm = push origin HEAD:master
+    pr = "!git diff -p -R --no-color | grep -E \"^(diff|(old|new) mode)\" --color=auto | git apply"
     pum = push upstream master
     puhm = push upstream HEAD:master
     sub = "submodule foreach --quiet 'echo \"$(git rev-parse --abbrev-ref HEAD)    => $name\"'"
