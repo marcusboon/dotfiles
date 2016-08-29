@@ -149,4 +149,4 @@ bindsym F4 exec ~/.dotfiles/dmenussh.sh
 bindsym $mod+m move workspace to output left
 
 # Lock the screen
-bindsym Ctrl+l exec i3lock
+bindsym Ctrl+mod1+l exec i3lock
