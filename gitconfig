@@ -12,7 +12,6 @@
 ; user variables
 [user]
     name = Marcus Boon
-    email = "(none)"
 
 ; Make it pretty!
 [color]
