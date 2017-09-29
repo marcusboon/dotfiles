@@ -42,3 +42,7 @@
 [push]
     recurseSubmodule = check
     default = matching
+
+; Add our custom pre-commit hook
+[init]
+    templatedir = ~/.dotfiles/git/templates
