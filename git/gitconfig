@@ -12,6 +12,7 @@
 ; user variables
 [user]
     name = Marcus Boon
+    email = marcus@catalyst-au.net
 
 ; Make it pretty!
 [color]
