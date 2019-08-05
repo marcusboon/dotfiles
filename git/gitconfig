@@ -8,6 +8,7 @@
 [core]
     filemode = false
     trustctime = false
+    pager = less -X
 
 ; user variables
 [user]
