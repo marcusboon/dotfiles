@@ -2,3 +2,7 @@
     path = dircolors/solarized
     url = git@github.com:seebi/dircolors-solarized.git
     branch = master
+[submodule "gnome-themes/one"]
+    path = gnome-themes/one
+    url = git@github.com:denysdovhan/one-gnome-terminal.git
+    branch = master
