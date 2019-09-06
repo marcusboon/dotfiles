@@ -13,7 +13,7 @@
 ; user variables
 [user]
     name = Marcus Boon
-    email = marcus@boon.mx
+    email = marcus@catalyst-au.net
 
 ; Make it pretty!
 [color]
@@ -33,7 +33,7 @@
     pum = push upstream master
     puhm = push upstream HEAD:master
     sub = "submodule foreach --quiet 'echo \"$(git rev-parse --abbrev-ref HEAD)    => $name\"'"
-    sup = !sh -c 'git submodule sync && git submodule init && git submodule update' -
+    sup = !sh -c 'git submodule sync && git submodule init && git submodule update --recursive' -
     saup = !sh -c 'git submodule sync && git submodule init && git pull --recurse-submodules && git submodule update --remote --merge --recursive' -
     up = !sh -c 'git stash &&  git fetch --all && git pull --rebase && git stash pop'
 
