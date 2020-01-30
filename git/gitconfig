@@ -9,6 +9,7 @@
     filemode = false
     trustctime = false
     pager = less -X
+    excludesfile = ~/.dotfiles/git/gitignore
 
 ; user variables
 [user]
