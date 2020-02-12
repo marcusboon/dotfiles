@@ -3,3 +3,4 @@
 .gz
 .vscode
 *.bak
+CodeSniffer/Standards/*
