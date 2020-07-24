@@ -1,0 +1,4 @@
+#!/bin/bash
+
+sudo pulseaudio
+sudo pulseaudio -k && sudo alsa force-reload
