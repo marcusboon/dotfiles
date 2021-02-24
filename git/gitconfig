@@ -49,6 +49,10 @@
     recurseSubmodule = check
     default = matching
 
+; pull variable
+[pull]
+    ff = only
+
 ; Add our custom pre-commit hook
 [init]
     templatedir = ~/.dotfiles/git/templates
