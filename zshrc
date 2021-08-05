@@ -57,10 +57,7 @@ export PATH=$HOME/bin:/usr/local/bin:$PATH
 # export MANPATH="/usr/local/man:$MANPATH"
 
 # ssh agent settings
-# Enable agent forwarding support
-zstyle :omz:plugins:ssh-agent agent-forwarding on
-
-# Load different profiles
+# Load different identities
 zstyle :omz:plugins:ssh-agent identities id_rsa id_ed25519 id_yubikey
 
 source $ZSH/oh-my-zsh.sh
