@@ -49,12 +49,19 @@ ZSH_THEME="babun"
 # Custom plugins may be added to ~/.oh-my-zsh/custom/plugins/
 # Example format: plugins=(rails git textmate ruby lighthouse)
 # Add wisely, as too many plugins slow down shell startup.
-plugins=(git ssh-agent systemd)
+plugins=(git systemd ssh-agent)
 
 # User configuration
 
 export PATH=$HOME/bin:/usr/local/bin:$PATH
 # export MANPATH="/usr/local/man:$MANPATH"
+
+# ssh agent settings
+# Enable agent forwarding support
+zstyle :omz:plugins:ssh-agent agent-forwarding on
+
+# Load different profiles
+zstyle :omz:plugins:ssh-agent identities id_rsa id_ed25519 id_yubikey
 
 source $ZSH/oh-my-zsh.sh
 
@@ -82,5 +89,11 @@ source $ZSH/oh-my-zsh.sh
 # Example aliases
 # alias zshconfig="mate ~/.zshrc"
 # alias ohmyzsh="mate ~/.oh-my-zsh"
+alias apt='noglob apt'
+alias apt-get='noglob apt-get'
+
+export NVM_DIR="$HOME/.nvm"
+[ -s "$NVM_DIR/nvm.sh" ] && \. "$NVM_DIR/nvm.sh"  # This loads nvm
+[ -s "$NVM_DIR/bash_completion" ] && \. "$NVM_DIR/bash_completion"  # This loads nvm bash_completion
 
 eval $(thefuck --alias fff)
