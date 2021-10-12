@@ -1,8 +1,8 @@
 #!/bin/sh
 
-# get width of screen and height of screen
-SCREEN_WIDTH=$(xwininfo -root | awk '$1=="Width:" {print $2}')
-SCREEN_HEIGHT=$(xwininfo -root | awk '$1=="Height:" {print $2}')
+if [ -f ~/.dotfiles/windowmgnt/screenvars.conf ]; then
+    . ~/.dotfiles/windowmgnt/screenvars.conf
+fi
 
 # new width and height
 X=$(($SCREEN_WIDTH * 2 / 3))
