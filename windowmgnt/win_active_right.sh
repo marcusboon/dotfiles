@@ -5,7 +5,7 @@ if [ -f ~/.dotfiles/windowmgnt/screenvars.conf ]; then
 fi
 
 # new width and height
-X=$(($SCREEN_WIDTH * 2 / 3))
+X=$(($SCREEN_WIDTH / 3))
 Y=0
 W=$(($SCREEN_WIDTH * 2 / 3))
 H=$(($SCREEN_HEIGHT))
