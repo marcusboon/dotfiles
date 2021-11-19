@@ -6,3 +6,7 @@
     path = gnome-themes/one
     url = git@github.com:denysdovhan/one-gnome-terminal.git
     branch = master
+[submodule "tmux"]
+	path = tmux
+	url = https://github.com/gpakosz/.tmux.git
+	branch = master
