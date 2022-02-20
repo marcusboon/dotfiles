@@ -44,6 +44,10 @@
 [help]
     autocorrect = 1
 
+; fetch variable
+[fetch]
+    prune = true
+
 ; push variable
 [push]
     recurseSubmodule = check
