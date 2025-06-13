@@ -93,4 +93,22 @@ export NVM_DIR="$HOME/.nvm"
 [ -s "$NVM_DIR/nvm.sh" ] && \. "$NVM_DIR/nvm.sh"  # This loads nvm
 [ -s "$NVM_DIR/bash_completion" ] && \. "$NVM_DIR/bash_completion"  # This loads nvm bash_completion
 
-eval $(thefuck --alias fff)
+#eval $(thefuck --alias fff)
+export PATH=/usr/local/bin:/System/Cryptexes/App/usr/bin:/usr/bin:/bin:/usr/sbin:/sbin:/var/run/com.apple.security.cryptexd/codex.system/bootstrap/usr/local/bin:/var/run/com.apple.security.cryptexd/codex.system/bootstrap/usr/bin:/var/run/com.apple.security.cryptexd/codex.system/bootstrap/usr/appleinternal/bin:/Applications/iTerm.app/Contents/Resources/utilities:/opt/homebrew/bin:/opt/homebrew/bin
+
+# Added by LM Studio CLI (lms)
+export PATH="$PATH:/Users/marcus/.lmstudio/bin"
+
+# More python path stuff
+export PATH="$PATH:/Users/marcus/Library/Python/3.9/bin"
+
+# Created by `pipx` on 2025-03-04 03:59:10
+export PATH="$PATH:/Users/marcus/.local/bin"
+
+# Prioritise homebrew
+export PATH="/opt/homebrew/bin:$PATH"
+
+# Antigen
+source $HOME/.dotfiles/antigen.zsh
+antigen bundle https://github.com/jeffreytse/zsh-vi-mode
+antigen apply
