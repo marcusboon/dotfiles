@@ -106,3 +106,6 @@ export PATH="/opt/homebrew/bin:$PATH"
 if command -v tmux >/dev/null; then
   [ -z "$TMUX" ] && (tmux attach || tmux new-session)
 fi
+
+# Vi keybindings for tmux
+export EDITOR='vim'
