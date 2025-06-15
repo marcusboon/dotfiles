@@ -1,29 +1,9 @@
 #!/bin/bash
-
-# CSV Header
-echo "name,path,url,target_branch,current_branch,current_commit,status"
-
-# Parse submodules
-git config -f .gitmodules --get-regexp path | while read -r key path; do
-    name=$(echo "$key" | sed 's/^submodule\.//;s/\.path$//')
-    url=$(git config -f .gitmodules --get submodule."$name".url)
-    branch=$(git config -f .gitmodules --get submodule."$name".branch)
-    branch=${branch:-""}
-
-    if [ -d "$path/.git" ]; then
-        pushd "$path" > /dev/null
-
-        current_branch=$(git symbolic-ref --short HEAD 2>/dev/null || echo "detached")
-        current_commit=$(git rev-parse --short HEAD)
-        status="initialized"
-
-        popd > /dev/null
-    else
-        current_branch=""
-        current_commit=""
-        status="not initialized"
-    fi
-
-    # Output CSV line
-    echo "\"$name\",\"$path\",\"$url\",\"$branch\",\"$current_branch\",\"$current_commit\",\"$status\""
+echo -e "NAME\tPATH\tBRANCH\tCOMMIT"
+git config --file .gitmodules --get-regexp '^submodule\..*\.path$' | while read -r key path; do
+  name=${key#submodule.}
+  name=${name%.path}
+  branch=$(git config --file .gitmodules --get submodule.$name.branch)
+  commit=$(git ls-tree HEAD "$path" | awk '{print $3}')
+  echo -e "$name\t$path\t${branch:-<not set>}\t$commit"
 done
