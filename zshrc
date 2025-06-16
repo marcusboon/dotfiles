@@ -101,7 +101,6 @@ antigen apply
 # Prioritise homebrew
 export PATH="/opt/homebrew/bin:$PATH"
 
-# Auto tmux
 # Auto-attach or create tmux
 if command -v tmux >/dev/null; then
   [ -z "$TMUX" ] && (tmux attach || tmux new-session)
