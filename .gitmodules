@@ -1,10 +1,10 @@
 [submodule "dircolors/solarized"]
     path = dircolors/solarized
-    url = git@github.com:seebi/dircolors-solarized.git
+    url = https://github.com/seebi/dircolors-solarized.git 
     branch = master
 [submodule "gnome-themes/one"]
     path = gnome-themes/one
-    url = git@github.com:denysdovhan/one-gnome-terminal.git
+    url = https://github.com/denysdovhan/one-gnome-terminal.git 
     branch = master
 [submodule "tmux"]
 	path = tmux
