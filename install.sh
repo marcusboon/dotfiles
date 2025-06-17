@@ -10,6 +10,9 @@ ln -sfv ~/.dotfiles/omz-themes/babun.zsh-theme ~/.oh-my-zsh/themes/babun.zsh-the
 # Then lets do the gitconfig
 ln -sfv ~/.dotfiles/git/gitconfig ~/.gitconfig
 
+# Then lets do the sshrc
+ln -sfv ~/.dotfiles/sshrc ~/.ssh/rc
+
 # Then lets symlink the tmux config
 ln -sfv ~/.dotfiles/tmux/.tmux.conf ~/.tmux.conf
 

@@ -463,7 +463,11 @@ tmux_conf_uninstall_plugins_on_reload=true
 # 'tmux_conf_theme_status_right' variables.
 
 # SSL agent stuff
-set-environment -g SSH_AUTH_SOCK $SSH_AUTH_SOCK
+# first, unset update-environment[SSH_AUTH_SOCK] (idx 3), to prevent
+# the client overriding the global value
+set-option -g -u update-environment[3]
+# And set the global value to our static symlink'd path:
+set-environment -g SSH_AUTH_SOCK $HOME/.ssh/ssh_auth_sock
 
 
 # ------------------------------------------------------------------------------
