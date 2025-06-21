@@ -13,6 +13,10 @@ ln -sfv ~/.dotfiles/git/gitconfig ~/.gitconfig
 # Then lets do the sshrc
 ln -sfv ~/.dotfiles/sshrc ~/.ssh/rc
 
+# Install the rclone config
+mkdir -p ~/.config/rclone
+ln -sfv ~/.dotfiles/rclone/rclone.conf ~/.config/rclone/rclone.conf
+
 # Then lets symlink the tmux config
 ln -sfv ~/.dotfiles/tmux/.tmux.conf ~/.tmux.conf
 
