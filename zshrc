@@ -101,9 +101,12 @@ antigen apply
 # Prioritise homebrew
 export PATH="/opt/homebrew/bin:$PATH"
 
-# Auto-attach or create tmux
-if command -v tmux >/dev/null; then
-  [ -z "$TMUX" ] && (tmux attach || tmux new-session)
+# Auto-attach or create tmux only on SSH, in interactive shells, with a terminal, and not already inside tmux
+if [ -n "$SSH_CONNECTION" ] && [[ $- == *i* ]] && [ -z "$TMUX" ] && command -v tmux >/dev/null; then
+  if [ -t 0 ]; then
+    tmux attach || tmux new-session
+    exit
+  fi
 fi
 
 # Vi keybindings for tmux
