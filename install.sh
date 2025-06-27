@@ -4,6 +4,9 @@
 # First lets symlink the zshrc
 ln -sfv ~/.dotfiles/zshrc ~/.zshrc
 
+# Next lets symlink the bash_profile
+ln -sfv ~/.dotfiles/bash_profile ~/.bash_profile
+
 # Next lets symlink the custom theme
 ln -sfv ~/.dotfiles/omz-themes/babun.zsh-theme ~/.oh-my-zsh/themes/babun.zsh-theme
 
