@@ -20,6 +20,9 @@ ln -sfv ~/.dotfiles/sshrc ~/.ssh/rc
 mkdir -p ~/.config/rclone
 ln -sfv ~/.dotfiles/rclone/rclone.conf ~/.config/rclone/rclone.conf
 
+# Then lets do the wezterm config
+ln -sfv ~/.dotfiles/wezterm.lua ~/.wezterm.lua
+
 # Then lets symlink the tmux config
 ln -sfv ~/.dotfiles/tmux/.tmux.conf ~/.tmux.conf
 
