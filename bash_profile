@@ -28,6 +28,9 @@ if [ -n "$SSH_CONNECTION" ] && [ -z "$TMUX" ]; then
     fi
 fi
 
+# Vim mode for bash
+set -o vi
+
 # Vi keybindings for tmux
 export EDITOR='vim'
 
