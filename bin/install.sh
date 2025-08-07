@@ -20,6 +20,9 @@ ln -sfv ~/.dotfiles/sshrc ~/.ssh/rc
 mkdir -p ~/.config/rclone
 ln -sfv ~/.dotfiles/rclone/rclone.conf ~/.config/rclone/rclone.conf
 
+# Install our inputrc to ensure CTRL+L and other shortcuts continue to work
+ln -sfv ~/.dotfiles/inputrc ~/.inputrc
+
 # Then lets do the wezterm config
 ln -sfv ~/.dotfiles/wezterm.lua ~/.wezterm.lua
 
