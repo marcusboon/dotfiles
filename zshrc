@@ -117,12 +117,14 @@ if [ -n "$SSH_CONNECTION" ] && [ -z "$TMUX" ]; then
         echo "Options:"
         echo "  1) Attach to an existing session"
         echo "  2) Create a new session"
-        read -p "Choose an option [1/2]: " choice
+        echo -n "Choose an option [1/2]: "
+        read choice
         if [ "$choice" = "1" ]; then
             tmux attach-session
             exit
         elif [ "$choice" = "2" ]; then
-            read -p "Enter new session name: " newname
+            echo -n "Enter new session name: "
+            read newname
             tmux new-session -s "$newname"
             exit
         else
@@ -133,3 +135,8 @@ fi
 
 # Vi keybindings for tmux
 export EDITOR='vim'
+
+# Added by LM Studio CLI (lms)
+export PATH="$PATH:/Users/marcus/.lmstudio/bin"
+# End of LM Studio CLI section
+
