@@ -103,7 +103,6 @@ export PATH="/opt/homebrew/bin:$PATH"
 
 # Auto-attach or create tmux only on SSH, in interactive shells, with a terminal, and not already inside tmux
 # ~/.bash_profile or ~/.bashrc
-# Only run if this is an SSH session and not already inside tmux
 if [ -n "$SSH_CONNECTION" ] && [ -z "$TMUX" ]; then
     session_count=$(tmux ls 2>/dev/null | wc -l)
     if [ "$session_count" -eq 0 ]; then
@@ -112,20 +111,29 @@ if [ -n "$SSH_CONNECTION" ] && [ -z "$TMUX" ]; then
         exit
     else
         echo "Tmux sessions detected:"
-        tmux ls
-        echo
-        echo "Options:"
-        echo "  1) Attach to an existing session"
-        echo "  2) Create a new session"
-        echo -n "Choose an option [1/2]: "
+        sessions=$(tmux ls 2>/dev/null | awk -F: '{print $1}')
+        i=1
+        for s in $sessions; do
+            echo "  $i) $s"
+            i=$((i+1))
+        done
+        echo "  n) Create a new session"
+
+        echo -n "Choose a session number or 'n': "
         read choice
-        if [ "$choice" = "1" ]; then
-            tmux attach-session
-            exit
-        elif [ "$choice" = "2" ]; then
+
+        if [ "$choice" = "n" ]; then
             echo -n "Enter new session name: "
             read newname
             tmux new-session -s "$newname"
+            exit
+        elif [[ "$choice" =~ ^[0-9]+$ ]]; then
+            selected=$(echo "$sessions" | sed -n "${choice}p")
+            if [ -n "$selected" ]; then
+                tmux attach-session -t "$selected"
+            else
+                echo "Invalid selection."
+            fi
             exit
         else
             echo "Invalid choice. Not starting tmux."
