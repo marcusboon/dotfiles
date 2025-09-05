@@ -102,42 +102,44 @@ antigen apply
 export PATH="/opt/homebrew/bin:$PATH"
 
 # Auto-attach or create tmux only on SSH, in interactive shells, with a terminal, and not already inside tmux
-# ~/.bash_profile or ~/.bashrc
+# Put in ~/.bash_profile, ~/.bashrc, or ~/.zshrc
 if [ -n "$SSH_CONNECTION" ] && [ -z "$TMUX" ]; then
-    session_count=$(tmux ls 2>/dev/null | wc -l)
-    if [ "$session_count" -eq 0 ]; then
-        # No sessions exist, start a new one
+    sessions=$(tmux ls -F '#S' 2>/dev/null || true)
+
+    if [ -z "$sessions" ]; then
         tmux new-session
         exit
     else
         echo "Tmux sessions detected:"
-        sessions=$(tmux ls 2>/dev/null | awk -F: '{print $1}')
         i=1
-        for s in $sessions; do
-            echo "  $i) $s"
+        printf '%s\n' "$sessions" | while IFS= read -r s; do
+            printf '  %d) %s\n' "$i" "$s"
             i=$((i+1))
         done
-        echo "  n) Create a new session"
+        printf '  n) Create a new session\n'
+        printf "Choose a session number or 'n': "
+        IFS= read -r choice
 
-        echo -n "Choose a session number or 'n': "
-        read choice
-
-        if [ "$choice" = "n" ]; then
-            echo -n "Enter new session name: "
-            read newname
-            tmux new-session -s "$newname"
-            exit
-        elif [[ "$choice" =~ ^[0-9]+$ ]]; then
-            selected=$(echo "$sessions" | sed -n "${choice}p")
-            if [ -n "$selected" ]; then
-                tmux attach-session -t "$selected"
-            else
-                echo "Invalid selection."
-            fi
-            exit
-        else
-            echo "Invalid choice. Not starting tmux."
-        fi
+        case $choice in
+            n|N)
+                printf "Enter new session name: "
+                IFS= read -r newname
+                tmux new-session -s "$newname"
+                exit
+                ;;
+            ''|*[!0-9]*)
+                echo "Invalid choice. Not starting tmux."
+                ;;
+            *)
+                selected=$(printf '%s\n' "$sessions" | sed -n "${choice}p")
+                if [ -n "$selected" ]; then
+                    tmux attach-session -t "$selected"
+                else
+                    echo "Invalid selection."
+                fi
+                exit
+                ;;
+        esac
     fi
 fi
 
